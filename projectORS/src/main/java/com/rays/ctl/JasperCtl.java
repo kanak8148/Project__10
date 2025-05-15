@@ -6,6 +6,7 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.ResourceBundle;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -17,11 +18,9 @@ import org.hibernate.SessionFactory;
 import org.hibernate.engine.jdbc.connections.spi.ConnectionProvider;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
-import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.rays.common.BaseCtl;
@@ -57,37 +56,38 @@ public class JasperCtl extends BaseCtl<MarksheetForm, MarksheetDTO, MarksheetSer
 	/** The session factory. */
 	
 //	  @Autowired 
-	  private SessionFactory sessionFactory=null;
-	  
-	 /** The context. */
-	
-	  @Autowired 
-	  ServletContext context;
-	  
-	  @PersistenceContext
-	  protected EntityManager entityManager;
-	  
-	 /**
-		 * Display.
-		 *
-		 * @param request  the request
-		 * @param response the response
-		 * @throws JRException  the JR exception
-		 * @throws SQLException the SQL exception
-		 * @throws IOException  Signals that an I/O exception has occurred.
-		 */
-	  @GetMapping(value="/report",produces = {MediaType.APPLICATION_JSON_VALUE})
+	private SessionFactory sessionFactory = null;
+
+	/** The context. */
+
+	@Autowired
+	ServletContext context;
+
+	@PersistenceContext
+	protected EntityManager entityManager;
+
+	/**
+	 * Display.
+	 *
+	 * @param request  the request
+	 * @param response the response
+	 * @throws JRException  the JR exception
+	 * @throws SQLException the SQL exception
+	 * @throws IOException  Signals that an I/O exception has occurred.
+	 */
+	@GetMapping(value = "/report", produces = { MediaType.APPLICATION_JSON_VALUE })
 	public void display(HttpServletRequest request, HttpServletResponse response)
 			throws JRException, SQLException, IOException {
 		System.out.println("********************** Jasper Ctl*********************");
 		ORSResponse res = new ORSResponse(true);
-		String path = context.getRealPath("C:\\\\Users\\\\hp\\\\JaspersoftWorkspace\\\\MyReports\\\\mmls.jrxml");
-		
+		ResourceBundle rb = ResourceBundle.getBundle("application");
+		//String path = context.getRealPath("C:\\Users\\dell\\JaspersoftWorkspace\\MyReports\\ORS10.jrxml");
+		 String path = context.getRealPath(rb.getString("jasper"));
+
 		Connection con = null;
-		JasperReport jasperReport = JasperCompileManager.compileReport(path);
+		JasperReport jasperReport = JasperCompileManager.compileReport(rb.getString("jasper"));
 		Map<String, Object> map = new HashMap<String, Object>();
-		 this.sessionFactory =
-				 entityManager.getEntityManagerFactory().unwrap(SessionFactory.class);
+		this.sessionFactory = entityManager.getEntityManagerFactory().unwrap(SessionFactory.class);
 		con = sessionFactory.getSessionFactoryOptions().getServiceRegistry().getService(ConnectionProvider.class)
 				.getConnection();
 		JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, map, con);
@@ -96,7 +96,7 @@ public class JasperCtl extends BaseCtl<MarksheetForm, MarksheetDTO, MarksheetSer
 		response.getOutputStream().write(pdf);
 		response.getOutputStream().flush();
 		System.out.println("Thanks");
-		//return MediaType.APPLICATION_JSON_VALUE;
+		// return MediaType.APPLICATION_JSON_VALUE;
 	}
 
 }
