@@ -40,6 +40,8 @@ import { ProductComponent } from './product/product.component';
 import { ProductListComponent } from './product/product-list.component';
 import { ItemComponent } from './item/item.component';
 import { ItemListComponent } from './item/item-list.component';
+import { StaffMemberComponent } from './staff-member/staff-member.component';
+import { StaffmemberlistComponent } from './staffmember/staffmemberlist.component';
 const routes: Routes = [
     {
         path: '',
@@ -127,6 +129,19 @@ component: ItemListComponent
 {
 path: 'item/:id',
 component: ItemComponent
+
+},
+{
+    path: 'staff',
+    component: StaffMemberComponent
+},
+{
+path: 'staffList',
+component: StaffmemberlistComponent
+},
+{
+path: 'staff/:id',
+component: StaffMemberComponent
 
 },
 

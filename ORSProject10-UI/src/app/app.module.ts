@@ -60,6 +60,10 @@ import { ProductComponent } from './product/product.component';
 import { ProductListComponent } from './product/product-list.component';
 import { ItemComponent } from './item/item.component';
 import { ItemListComponent } from './item/item-list.component';
+import { StaffMemberComponent } from './staff-member/staff-member.component';
+import { StaffmemberlistComponent } from './staffmember/staffmemberlist.component';
+
+
 
 
 
@@ -113,7 +117,14 @@ export function myHttpLoader(http: HttpClient) {
     ProductComponent,
     ProductListComponent,
     ItemComponent,
-    ItemListComponent
+    ItemListComponent,
+     StaffMemberComponent,
+     StaffmemberlistComponent,
+
+    
+    
+    
+  
    
   ],
   imports: [

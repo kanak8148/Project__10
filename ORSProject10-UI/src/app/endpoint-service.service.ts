@@ -24,6 +24,6 @@ export class EndpointServiceService {
   public CART = this.SERVER_URL + "/Cart";
   public PRODUCT = this.SERVER_URL + "/Product";
   public ITEM = this.SERVER_URL + "/Item";
-
+  public STAFF = this.SERVER_URL + "/Staff";
 
 }
