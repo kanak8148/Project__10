@@ -31,6 +31,7 @@
                  placeholder="{{ 'Search previousEmployer' | translate }}">
         </div>
 
+        <div class="col-sm-2">
         <select class="form-control" name="divison" id="divison"  [(ngModel)]="form.searchParams.divison" style="cursor: pointer;">
                   <option [ngValue]="" value="undefined">{{ 'Please divison' | translate }}</option>
                   <option value="'It">{{ 'It' | translate }}</option>
@@ -39,7 +40,7 @@
                   <option value="Education">{{ 'Education' | translate }}</option>
                   <option value="Marketing">{{ 'Marketing' | translate }}</option>
                 </select>
-
+  </div>
         <div class="col-sm-2">
           <input type="date" class="form-control" 
                  [(ngModel)]="form.searchParams.joiningDate"
