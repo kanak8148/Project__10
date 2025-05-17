@@ -31,7 +31,7 @@
                  placeholder="{{ 'Search previousEmployer' | translate }}">
         </div>
 
-        <select class="form-control" name="divison" id="divison" [(ngModel)]="form.data.divison" style="cursor: pointer;">
+        <select class="form-control" name="divison" id="divison"  [(ngModel)]="form.searchParams.divison" style="cursor: pointer;">
                   <option [ngValue]="" value="undefined">{{ 'Please divison' | translate }}</option>
                   <option value="'It">{{ 'It' | translate }}</option>
                   <option value="sales">{{ 'sales' | translate }}</option>
