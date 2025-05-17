@@ -31,14 +31,14 @@
                  placeholder="{{ 'Search previousEmployer' | translate }}">
         </div>
 
-        <div class="col-sm-2">
-          <select class="form-control" name="divison" 
-                  [(ngModel)]="form.searchParams.divison" 
-                  aria-label="ngSelected">
-            <option [ngValue]="" value="undefined">{{ 'Select Divison' | translate }}</option>
-            <option *ngFor="let obj of form.preload.stafflist" [value]="obj.key">{{ obj.value }}</option>
-          </select>
-        </div>
+        <select class="form-control" name="divison" id="divison" [(ngModel)]="form.data.divison" style="cursor: pointer;">
+                  <option [ngValue]="" value="undefined">{{ 'Please divison' | translate }}</option>
+                  <option value="'It">{{ 'It' | translate }}</option>
+                  <option value="sales">{{ 'sales' | translate }}</option>
+                  <option value="Tax">{{ 'Tax' | translate }}</option>
+                  <option value="Education">{{ 'Education' | translate }}</option>
+                  <option value="Marketing">{{ 'Marketing' | translate }}</option>
+                </select>
 
         <div class="col-sm-2">
           <input type="date" class="form-control" 
