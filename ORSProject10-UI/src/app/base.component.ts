@@ -29,7 +29,7 @@ export class BaseCtl implements OnInit {
     this.api.preload = ep + "/preload";
     this.api.report = ep + "/report";
 
-    console.log("API", this.api);
+   
   }
 
   /**
@@ -74,6 +74,7 @@ export class BaseCtl implements OnInit {
    */
   ngOnInit() {
     this.preload();
+    console.log("***********************han bhai chalaaaaa huuu>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>")
     if (this.form.data.id && this.form.data.id > 0) {
       this.display();
     }

@@ -6,7 +6,7 @@ import { BaseCtl } from './base.component';
 import { FormBuilder, FormGroup, FormControl, Validators, FormArray } from '@angular/forms';
 import { element } from '@angular/core/src/render3';
 
-export class BaseListCtl extends BaseCtl {  
+export class BaseListCtl extends BaseCtl { 
   
     @ViewChildren("checkboxes") checkboxes: QueryList<ElementRef>;
   deleteRecordList: any = [];
@@ -22,6 +22,7 @@ export class BaseListCtl extends BaseCtl {
    */
   ngOnInit() {   
     this.preload();
+      console.log("***********************han bhai chalaaaaa huuu>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>")
     this.search();
     this.isMasterSel = false ;
   }
